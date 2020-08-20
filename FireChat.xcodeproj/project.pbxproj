@@ -22,6 +22,8 @@
 		CBE4169124EE6627009A23AB /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169024EE6627009A23AB /* BottomButton.swift */; };
 		CBE4169324EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */; };
 		CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */; };
+		CBE4169724EE7B9F009A23AB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169624EE7B9F009A23AB /* LoginViewModel.swift */; };
+		CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169C24EEA865009A23AB /* RegistrationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		CBE4169024EE6627009A23AB /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
 		CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureGradientBackground.swift"; sourceTree = "<group>"; };
 		CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureStackView.swift"; sourceTree = "<group>"; };
+		CBE4169624EE7B9F009A23AB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CBE4169C24EEA865009A23AB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		CBE4167C24ED0A6A009A23AB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CBE4169A24EEA78C009A23AB /* Authentification */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -146,6 +151,15 @@
 			children = (
 				CBE4168224ED159B009A23AB /* LoginController.swift */,
 				CBE4168424ED15A6009A23AB /* RegistrationController.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
+		CBE4169A24EEA78C009A23AB /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				CBE4169624EE7B9F009A23AB /* LoginViewModel.swift */,
+				CBE4169C24EEA865009A23AB /* RegistrationViewModel.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -229,10 +243,12 @@
 				CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */,
 				CBE4168024ED0ADB009A23AB /* ConversationsController.swift in Sources */,
 				CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */,
+				CBE4169724EE7B9F009A23AB /* LoginViewModel.swift in Sources */,
 				CBE4169124EE6627009A23AB /* BottomButton.swift in Sources */,
 				CBE4168524ED15A6009A23AB /* RegistrationController.swift in Sources */,
 				CBE4168324ED159B009A23AB /* LoginController.swift in Sources */,
 				CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */,
+				CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

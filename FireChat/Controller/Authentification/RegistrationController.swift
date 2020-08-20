@@ -12,10 +12,20 @@ class RegistrationController: UIViewController {
 
     // MARK: - Properties
 
+    private var registrationViewModel: RegistrationViewModel {
+        let email = emailContainerView.getTextField().text
+        let password = passwordContainerView.getTextField().text
+        let fullName = nameContainerView.getTextField().text
+        let userName = usernameContainerView.getTextField().text
+        return RegistrationViewModel(email: email, password: password, fullName: fullName, userName: userName)
+    }
+
     private let addPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "person.crop.circle.badge.plus"), for: .normal)
         button.tintColor = .white
+        button.clipsToBounds = true
+        button.imageView?.contentMode = .scaleAspectFill
         button.addTarget(self, action: #selector(displayPickerController), for: .touchUpInside)
         return button
     }()
@@ -28,12 +38,11 @@ class RegistrationController: UIViewController {
     textFieldSettings: TextFieldSettings(placeholder: "username"))
     private let passwordContainerView = InputContainerView(imageName: "lock",
     textFieldSettings: TextFieldSettings(placeholder: "password"))
-    private let signUpButton = CustomButton(title: "Sign Up")
-    // control target parameters value and if needed to keep the lazy var
+    // is target needed? and if not don't need to keep the lazy var 
+    private lazy var signUpButton = CustomButton(title: "Sign Up", target: (RegistrationController() as UIViewController), action: #selector(displayLoginVC))
     private lazy var alreadyHaveAccountButton = BottomButton(firstString: "Already have an account?  ",
-                                               secondString: "Sign In",
+                                               secondString: "Log In",
                                                target: (RegistrationController() as UIViewController), action: #selector(displayLoginVC))
-    
 
     // MARK: - Lifecycle
 
@@ -46,12 +55,25 @@ class RegistrationController: UIViewController {
 
     @objc
     func displayPickerController() {
-        print("k")
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
+    }
+
+    @objc
+    func checkFormStatus() {
+        if registrationViewModel.formIsValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = #colorLiteral(red: 0.6597909927, green: 0.27138412, blue: 0.8506523371, alpha: 1)
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        }
     }
 
     @objc
     func displayLoginVC() {
-        navigationController?.pushViewController(LoginController(), animated: true)
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Helpers
@@ -68,6 +90,7 @@ class RegistrationController: UIViewController {
         stack.setAnchor(top: addPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
                         paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         configureAlreadyHaveAccountButton()
+        configureTextFields()
     }
 
     private func configureAddPhotoButton() {
@@ -81,5 +104,29 @@ class RegistrationController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.setAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+    }
+
+    private func configureTextFields() {
+        [emailContainerView, passwordContainerView,
+            nameContainerView, usernameContainerView].forEach { container in
+            container.getTextField().addTarget(self, action: #selector(checkFormStatus), for: .editingChanged)
+        }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        addPhotoButton.setDimensions(height: 155, width: 155)
+        if let imageViewConstraints = addPhotoButton.imageView?.constraints {
+             addPhotoButton.imageView?.removeConstraints(imageViewConstraints)
+        }
+        addPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
+        addPhotoButton.layer.borderColor = UIColor.white.cgColor
+        addPhotoButton.layer.borderWidth = 3.0
+        dismiss(animated: true)
     }
 }
