@@ -9,14 +9,16 @@
 import UIKit
 
 class CustomButton: UIButton {
-    init(title: String) {
+    init(title: String, target: UIViewController?, action: Selector) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         layer.cornerRadius = 5
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         setTitleColor(.white, for: .normal)
+        isEnabled = false
         setHeight(height: 50)
+        addTarget(target, action: action, for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {
