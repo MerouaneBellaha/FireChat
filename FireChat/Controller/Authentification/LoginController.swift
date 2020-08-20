@@ -21,13 +21,13 @@ class LoginController: UIViewController {
 
     private let emailContainerView = InputContainerView(imageName: "envelope",
                                                         textFieldSettings: TextFieldSettings(placeholder: "email"))
-
     private let passwordContainerView = InputContainerView(imageName: "lock",
-                                  textFieldSettings: TextFieldSettings(secured: true, placeholder: "password"))
-
+                                                           textFieldSettings: TextFieldSettings(secured: true, placeholder: "password"))
     private let loginButton = CustomButton(title: "Log in")
-
-    
+    // control target parameters value and if needed to keep the lazy var
+    private lazy var noAccountButton = BottomButton(firstString: "Don't have an account?  ",
+                                                    secondString: "Sign Up",
+                                                    target: (LoginController() as UIViewController), action: #selector(displayRegistrationVC))
 
     // MARK: - Lifecycle
 
@@ -37,39 +37,38 @@ class LoginController: UIViewController {
         print(passwordContainerView.getTextField().text)
     }
 
+    // MARK: - Selectors
+
+    @objc
+    func displayRegistrationVC() {
+        navigationController?.pushViewController(RegistrationController(), animated: true)
+    }
+
     // MARK: - Helpers
 
-    func configureUI() {
+    private func configureUI() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
 
-        configureGradientLayer()
+        configureGradientBackground()
         configureIconImage()
-        configureStackView()
+        let stack = configureStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
+        view.addSubview(stack)
+        stack.setAnchor(top: iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
+                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+        configureNoAccButton()
     }
 
-    func configureGradientLayer() {
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemPink.cgColor]
-        gradient.locations = [0, 1]
-        view.layer.addSublayer(gradient)
-        gradient.frame = view.frame
-    }
-
-    func configureIconImage() {
+    private func configureIconImage() {
         view.addSubview(iconImage)
         iconImage.centerX(inView: view)
         iconImage.setAnchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         iconImage.setDimensions(height: 120, width: 120)
     }
 
-    func configureStackView() {
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
-        stack.axis = .vertical
-        stack.spacing = 16
-
-        view.addSubview(stack)
-        stack.setAnchor(top: iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+    private func configureNoAccButton() {
+        view.addSubview(noAccountButton)
+        noAccountButton.centerX(inView: view)
+        noAccountButton.setAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
 }

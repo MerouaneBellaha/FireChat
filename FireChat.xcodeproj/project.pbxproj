@@ -19,6 +19,9 @@
 		CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168624ED1999009A23AB /* UIView + constraints.swift */; };
 		CBE4168B24EE5160009A23AB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168A24EE5160009A23AB /* InputContainerView.swift */; };
 		CBE4168D24EE5F8B009A23AB /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168C24EE5F8B009A23AB /* CustomButton.swift */; };
+		CBE4169124EE6627009A23AB /* BottomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169024EE6627009A23AB /* BottomButton.swift */; };
+		CBE4169324EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */; };
+		CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		CBE4168624ED1999009A23AB /* UIView + constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + constraints.swift"; sourceTree = "<group>"; };
 		CBE4168A24EE5160009A23AB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		CBE4168C24EE5F8B009A23AB /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CBE4169024EE6627009A23AB /* BottomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButton.swift; sourceTree = "<group>"; };
+		CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureGradientBackground.swift"; sourceTree = "<group>"; };
+		CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureStackView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				CBE4168624ED1999009A23AB /* UIView + constraints.swift */,
+				CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */,
+				CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,6 +129,7 @@
 			children = (
 				CBE4168A24EE5160009A23AB /* InputContainerView.swift */,
 				CBE4168C24EE5F8B009A23AB /* CustomButton.swift */,
+				CBE4169024EE6627009A23AB /* BottomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,9 +224,12 @@
 				CBE4166724ED0A34009A23AB /* ViewController.swift in Sources */,
 				CBE4168B24EE5160009A23AB /* InputContainerView.swift in Sources */,
 				CBE4166324ED0A34009A23AB /* AppDelegate.swift in Sources */,
+				CBE4169324EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift in Sources */,
 				CBE4168D24EE5F8B009A23AB /* CustomButton.swift in Sources */,
+				CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */,
 				CBE4168024ED0ADB009A23AB /* ConversationsController.swift in Sources */,
 				CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */,
+				CBE4169124EE6627009A23AB /* BottomButton.swift in Sources */,
 				CBE4168524ED15A6009A23AB /* RegistrationController.swift in Sources */,
 				CBE4168324ED159B009A23AB /* LoginController.swift in Sources */,
 				CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */,
