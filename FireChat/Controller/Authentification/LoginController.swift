@@ -19,11 +19,22 @@ class LoginController: UIViewController {
         return imageView
     }()
 
+    private let emailContainerView = InputContainerView(imageName: "envelope",
+                                                        textFieldSettings: TextFieldSettings(placeholder: "email"))
+
+    private let passwordContainerView = InputContainerView(imageName: "lock",
+                                  textFieldSettings: TextFieldSettings(secured: true, placeholder: "password"))
+
+    private let loginButton = CustomButton(title: "Log in")
+
+    
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        print(passwordContainerView.getTextField().text)
     }
 
     // MARK: - Helpers
@@ -33,14 +44,8 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
 
         configureGradientLayer()
-
-        view.addSubview(iconImage)
-        iconImage.translatesAutoresizingMaskIntoConstraints = false
-        iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        iconImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
-        iconImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
-
+        configureIconImage()
+        configureStackView()
     }
 
     func configureGradientLayer() {
@@ -49,5 +54,22 @@ class LoginController: UIViewController {
         gradient.locations = [0, 1]
         view.layer.addSublayer(gradient)
         gradient.frame = view.frame
+    }
+
+    func configureIconImage() {
+        view.addSubview(iconImage)
+        iconImage.centerX(inView: view)
+        iconImage.setAnchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        iconImage.setDimensions(height: 120, width: 120)
+    }
+
+    func configureStackView() {
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
+        stack.axis = .vertical
+        stack.spacing = 16
+
+        view.addSubview(stack)
+        stack.setAnchor(top: iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
+                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
     }
 }

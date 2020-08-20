@@ -17,6 +17,8 @@
 		CBE4168324ED159B009A23AB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168224ED159B009A23AB /* LoginController.swift */; };
 		CBE4168524ED15A6009A23AB /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168424ED15A6009A23AB /* RegistrationController.swift */; };
 		CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168624ED1999009A23AB /* UIView + constraints.swift */; };
+		CBE4168B24EE5160009A23AB /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168A24EE5160009A23AB /* InputContainerView.swift */; };
+		CBE4168D24EE5F8B009A23AB /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4168C24EE5F8B009A23AB /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		CBE4168224ED159B009A23AB /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		CBE4168424ED15A6009A23AB /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		CBE4168624ED1999009A23AB /* UIView + constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + constraints.swift"; sourceTree = "<group>"; };
+		CBE4168A24EE5160009A23AB /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
+		CBE4168C24EE5F8B009A23AB /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 		CBE4167D24ED0A71009A23AB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CBE4168A24EE5160009A23AB /* InputContainerView.swift */,
+				CBE4168C24EE5F8B009A23AB /* CustomButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,7 +213,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE4166724ED0A34009A23AB /* ViewController.swift in Sources */,
+				CBE4168B24EE5160009A23AB /* InputContainerView.swift in Sources */,
 				CBE4166324ED0A34009A23AB /* AppDelegate.swift in Sources */,
+				CBE4168D24EE5F8B009A23AB /* CustomButton.swift in Sources */,
 				CBE4168024ED0ADB009A23AB /* ConversationsController.swift in Sources */,
 				CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */,
 				CBE4168524ED15A6009A23AB /* RegistrationController.swift in Sources */,
