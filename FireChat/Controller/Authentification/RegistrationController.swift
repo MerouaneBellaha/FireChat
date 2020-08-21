@@ -39,10 +39,10 @@ class RegistrationController: UIViewController {
     private let passwordContainerView = InputContainerView(imageName: "lock",
     textFieldSettings: TextFieldSettings(placeholder: "password"))
     // is target needed? and if not don't need to keep the lazy var 
-    private lazy var signUpButton = CustomButton(title: "Sign Up", target: (RegistrationController() as UIViewController), action: #selector(displayLoginVC))
+    private lazy var signUpButton = CustomButton(title: "Sign Up", target: RegistrationController(), action: #selector(displayLoginVC))
     private lazy var alreadyHaveAccountButton = BottomButton(firstString: "Already have an account?  ",
                                                secondString: "Log In",
-                                               target: (RegistrationController() as UIViewController), action: #selector(displayLoginVC))
+                                               target: RegistrationController(), action: #selector(displayLoginVC))
 
     // MARK: - Lifecycle
 
@@ -62,13 +62,7 @@ class RegistrationController: UIViewController {
 
     @objc
     func checkFormStatus() {
-        if registrationViewModel.formIsValid {
-            signUpButton.isEnabled = true
-            signUpButton.backgroundColor = #colorLiteral(red: 0.6597909927, green: 0.27138412, blue: 0.8506523371, alpha: 1)
-        } else {
-            signUpButton.isEnabled = false
-            signUpButton.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        }
+       signUpButton.isAvailable = registrationViewModel.formIsValid
     }
 
     @objc
@@ -84,11 +78,8 @@ class RegistrationController: UIViewController {
 
         configureGradientBackground()
         configureAddPhotoButton()
-        let stack = configureStackView(arrangedSubviews: [emailContainerView, nameContainerView,
-                                                          usernameContainerView, passwordContainerView, signUpButton])
-        view.addSubview(stack)
-        stack.setAnchor(top: addPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+        configureStackView(arrangedSubviews: [emailContainerView, nameContainerView,
+                                              usernameContainerView, passwordContainerView, signUpButton]) { addPhotoButton }
         configureAlreadyHaveAccountButton()
         configureTextFields()
     }
@@ -130,3 +121,10 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true)
     }
 }
+
+
+//        let stack = configureStackView(arrangedSubviews: [emailContainerView, nameContainerView,
+//                                                          usernameContainerView, passwordContainerView, signUpButton])
+//        view.addSubview(stack)
+//        stack.setAnchor(top: addPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
+//                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)

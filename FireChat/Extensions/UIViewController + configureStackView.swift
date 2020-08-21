@@ -9,10 +9,13 @@
 import UIKit
 
 extension UIViewController {
-    func configureStackView(arrangedSubviews: [UIView]) -> UIStackView {
+    func configureStackView(arrangedSubviews: [UIView], callback topView: () -> UIView) {
         let stack = UIStackView(arrangedSubviews: arrangedSubviews)
         stack.axis = .vertical
         stack.spacing = 16
-        return stack
+
+        view.addSubview(stack)
+        stack.setAnchor(top: topView().bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
+        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
     }
 }
