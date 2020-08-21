@@ -30,10 +30,11 @@ class LoginController: UIViewController {
     private let passwordContainerView = InputContainerView(imageName: "lock",
                                                            textFieldSettings: TextFieldSettings(secured: true, placeholder: "password"))
     // is target needed? and if not don't need to keep the lazy var 
-    private lazy var loginButton = CustomButton(title: "Log in", target: (LoginController() as UIViewController), action: #selector(handleLogin))
+    private lazy var loginButton = CustomButton(title: "Log in", target: LoginController(), action: #selector(handleLogin))
     private lazy var noAccountButton = BottomButton(firstString: "Don't have an account?  ",
                                                     secondString: "Sign Up",
-                                                    target: (LoginController() as UIViewController), action: #selector(displayRegistrationVC))
+                                                    target: LoginController(), action: #selector(displayRegistrationVC))
+
 
     // MARK: - Lifecycle
 
@@ -56,13 +57,7 @@ class LoginController: UIViewController {
 
     @objc
     func checkFormStatus() {
-        if loginViewModel.formIsValid {
-            loginButton.isEnabled = true
-            loginButton.backgroundColor = #colorLiteral(red: 0.6597909927, green: 0.27138412, blue: 0.8506523371, alpha: 1)
-        } else {
-            loginButton.isEnabled = false
-            loginButton.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        }
+        loginButton.isAvailable = loginViewModel.formIsValid
     }
 
     // MARK: - Helpers
@@ -73,10 +68,7 @@ class LoginController: UIViewController {
 
         configureGradientBackground()
         configureIconImage()
-        let stack = configureStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
-        view.addSubview(stack)
-        stack.setAnchor(top: iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
-                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+        configureStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton]) { iconImage }
         configureNoAccButton()
         configureTextFields()
     }

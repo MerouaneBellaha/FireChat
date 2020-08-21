@@ -9,6 +9,18 @@
 import UIKit
 
 class CustomButton: UIButton {
+    var isAvailable = false {
+        didSet {
+            if isAvailable == true {
+                isEnabled = true
+                backgroundColor =  #colorLiteral(red: 0.6597909927, green: 0.27138412, blue: 0.8506523371, alpha: 1)
+            } else {
+                isEnabled = false
+                backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            }
+        }
+    }
+
     init(title: String, target: UIViewController?, action: Selector) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
