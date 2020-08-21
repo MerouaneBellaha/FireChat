@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  UIView + constraints.swift
 //  FireChat
 //
 //  Created by Merouane Bellaha on 19/08/2020.
