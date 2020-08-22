@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
 
     // MARK: - Properties
+
+    private let authService = AuthService()
 
     private var registrationViewModel: RegistrationViewModel {
         let email = emailContainerView.getTextField().text
@@ -33,16 +36,16 @@ class RegistrationController: UIViewController {
     private let emailContainerView = InputContainerView(imageName: "envelope",
                                                         textFieldSettings: TextFieldSettings(placeholder: "email"))
     private let nameContainerView = InputContainerView(imageName: "person",
-    textFieldSettings: TextFieldSettings(placeholder: "full name"))
+                                                       textFieldSettings: TextFieldSettings(placeholder: "full name"))
     private let usernameContainerView = InputContainerView(imageName: "person",
-    textFieldSettings: TextFieldSettings(placeholder: "username"))
+                                                           textFieldSettings: TextFieldSettings(placeholder: "username"))
     private let passwordContainerView = InputContainerView(imageName: "lock",
-    textFieldSettings: TextFieldSettings(placeholder: "password"))
+                                                           textFieldSettings: TextFieldSettings(placeholder: "password"))
     // is target needed? and if not don't need to keep the lazy var 
-    private lazy var signUpButton = CustomButton(title: "Sign Up", target: RegistrationController(), action: #selector(displayLoginVC))
+    private lazy var signUpButton = CustomButton(title: "Sign Up", target: RegistrationController(), action: #selector(handleRegistration))
     private lazy var alreadyHaveAccountButton = BottomButton(firstString: "Already have an account?  ",
-                                               secondString: "Log In",
-                                               target: RegistrationController(), action: #selector(displayLoginVC))
+                                                             secondString: "Log In",
+                                                             target: RegistrationController(), action: #selector(displayLoginVC))
 
     // MARK: - Lifecycle
 
@@ -62,7 +65,7 @@ class RegistrationController: UIViewController {
 
     @objc
     func checkFormStatus() {
-       signUpButton.isAvailable = registrationViewModel.formIsValid
+        signUpButton.isAvailable = registrationViewModel.formIsValid
     }
 
     @objc
@@ -70,6 +73,35 @@ class RegistrationController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
 
+    @objc
+    func handleRegistration() {
+        guard let email = emailContainerView.getTextField().text,
+            let password = passwordContainerView.getTextField().text,
+            let fullName = nameContainerView.getTextField().text,
+            let userName = usernameContainerView.getTextField().text?.lowercased(),
+            let profileImage = addPhotoButton.imageView?.image ?? UIImage(systemName: "person"),
+            let profileImageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName,
+                                                  userName: userName, profileImageData: profileImageData)
+        authService.credentials = credentials
+        authService.createUser { error in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    self.dismiss(animated: true)
+                }
+
+//        let userFactory = UserFactory(email: email, password: password, fullName: fullName,
+//                                      userName: userName, profileImageData: profileImageData)
+//        userFactory.createUser { error in
+//            guard error == nil else {
+//                print(error!.localizedDescription)
+//                return
+//            }
+//            self.dismiss(animated: true)
+//        }
+    }
     // MARK: - Helpers
 
     private func configureUI() {
@@ -99,7 +131,7 @@ class RegistrationController: UIViewController {
 
     private func configureTextFields() {
         [emailContainerView, passwordContainerView,
-            nameContainerView, usernameContainerView].forEach { container in
+         nameContainerView, usernameContainerView].forEach { container in
             container.getTextField().addTarget(self, action: #selector(checkFormStatus), for: .editingChanged)
         }
     }
@@ -112,7 +144,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         let image = info[.originalImage] as? UIImage
         addPhotoButton.setDimensions(height: 155, width: 155)
         if let imageViewConstraints = addPhotoButton.imageView?.constraints {
-             addPhotoButton.imageView?.removeConstraints(imageViewConstraints)
+            addPhotoButton.imageView?.removeConstraints(imageViewConstraints)
         }
         addPhotoButton.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
@@ -121,10 +153,3 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         dismiss(animated: true)
     }
 }
-
-
-//        let stack = configureStackView(arrangedSubviews: [emailContainerView, nameContainerView,
-//                                                          usernameContainerView, passwordContainerView, signUpButton])
-//        view.addSubview(stack)
-//        stack.setAnchor(top: addPhotoButton.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
-//                        paddingTop: 32, paddingLeft: 32, paddingRight: 32)

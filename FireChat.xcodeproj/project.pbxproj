@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,7 @@
 		CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */; };
 		CBE4169724EE7B9F009A23AB /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169624EE7B9F009A23AB /* LoginViewModel.swift */; };
 		CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4169C24EEA865009A23AB /* RegistrationViewModel.swift */; };
+		CBF7BE3D24F0F91800076540 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7BE3C24F0F91800076540 /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureStackView.swift"; sourceTree = "<group>"; };
 		CBE4169624EE7B9F009A23AB /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CBE4169C24EEA865009A23AB /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		CBF7BE3C24F0F91800076540 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DA5DE5283A4014071B914029 /* Pods_FireChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -80,7 +82,6 @@
 				25B1086A05EEDE7A117538FC /* Pods-FireChat.debug.xcconfig */,
 				6217E6873D68D33EE2D170C9 /* Pods-FireChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -170,6 +171,7 @@
 		CBE4167E24ED0A78009A23AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7BE3C24F0F91800076540 /* AuthService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +324,7 @@
 				CBE4168324ED159B009A23AB /* LoginController.swift in Sources */,
 				CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */,
 				CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */,
+				CBF7BE3D24F0F91800076540 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

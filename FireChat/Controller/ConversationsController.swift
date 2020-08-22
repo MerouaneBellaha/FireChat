@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 // constant
 
@@ -23,16 +24,40 @@ class ConversationsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        authentificateUser()
     }
 
     // MARK: - Selectors
 
     @objc
-    func showProfile() {
-        print("showProfile")
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            presentLoginScreen()
+        }
+        catch { print("error loggingout") }
+    }
+
+    // MARK: - API
+
+    func authentificateUser() {
+        if Auth.auth().currentUser?.uid == nil {
+            presentLoginScreen()
+        } else {
+            print("user is alreay loggedin")
+        }
     }
 
     // MARK: - Helpers
+
+    func presentLoginScreen() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
 
     func configureUI() {
         view.backgroundColor = .white
@@ -41,7 +66,7 @@ class ConversationsController: UIViewController {
         configureTableView()
 
         let image = UIImage(systemName: "person.circle.fill")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(logout))
     }
 
 
