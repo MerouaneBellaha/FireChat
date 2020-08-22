@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
     // MARK: - Properties
+
+    private let authService = AuthService()
 
     private var loginViewModel: LoginViewModel {
         let email = emailContainerView.getTextField().text
@@ -47,7 +50,15 @@ class LoginController: UIViewController {
 
     @objc
     func handleLogin() {
-        print("handle login")
+        guard let email = emailContainerView.getTextField().text,
+            let password = passwordContainerView.getTextField().text else { return }
+        authService.logUserIn(withEmail: email, password: password) { result, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            self.dismiss(animated: true)
+        }
     }
 
     @objc
