@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7B0709B34724022E0923078A /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5DE5283A4014071B914029 /* Pods_FireChat.framework */; };
 		CB1315A724EFBE3F00F86D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */; };
+		CB8427E124F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */; };
+		CBD03B3A24F249FC00F6D883 /* UIViewController + HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */; };
+		CBD03B3C24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */; };
 		CBE4166324ED0A34009A23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166224ED0A34009A23AB /* AppDelegate.swift */; };
 		CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166424ED0A34009A23AB /* SceneDelegate.swift */; };
 		CBE4166724ED0A34009A23AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166624ED0A34009A23AB /* ViewController.swift */; };
@@ -33,6 +36,9 @@
 		25B1086A05EEDE7A117538FC /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 		6217E6873D68D33EE2D170C9 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
 		CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureNavigationBar.swift"; sourceTree = "<group>"; };
+		CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + HUD.swift"; sourceTree = "<group>"; };
+		CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationController + configureKeyboardNotification.swift"; sourceTree = "<group>"; };
 		CBE4165F24ED0A34009A23AB /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE4166224ED0A34009A23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBE4166424ED0A34009A23AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,9 @@
 				CBE4168624ED1999009A23AB /* UIView + constraints.swift */,
 				CBE4169224EE6CC4009A23AB /* UIViewController + configureGradientBackground.swift */,
 				CBE4169424EE717E009A23AB /* UIViewController + configureStackView.swift */,
+				CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */,
+				CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */,
+				CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -319,7 +328,10 @@
 				CBE4168024ED0ADB009A23AB /* ConversationsController.swift in Sources */,
 				CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */,
 				CBE4169724EE7B9F009A23AB /* LoginViewModel.swift in Sources */,
+				CBD03B3C24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift in Sources */,
+				CB8427E124F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift in Sources */,
 				CBE4169124EE6627009A23AB /* BottomButton.swift in Sources */,
+				CBD03B3A24F249FC00F6D883 /* UIViewController + HUD.swift in Sources */,
 				CBE4168524ED15A6009A23AB /* RegistrationController.swift in Sources */,
 				CBE4168324ED159B009A23AB /* LoginController.swift in Sources */,
 				CBE4168724ED1999009A23AB /* UIView + constraints.swift in Sources */,

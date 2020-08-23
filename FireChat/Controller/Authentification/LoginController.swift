@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class LoginController: UIViewController {
     
@@ -52,8 +51,10 @@ class LoginController: UIViewController {
     func handleLogin() {
         guard let email = emailContainerView.getTextField().text,
             let password = passwordContainerView.getTextField().text else { return }
+        showHUD(with: "Logging in")
         authService.logUserIn(withEmail: email, password: password) { result, error in
             guard error == nil else {
+                self.HUD?.dismiss()
                 print(error!.localizedDescription)
                 return
             }
@@ -74,9 +75,7 @@ class LoginController: UIViewController {
     // MARK: - Helpers
 
     private func configureUI() {
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
-
+        hideNavigationBar()
         configureGradientBackground()
         configureIconImage()
         configureStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton]) { iconImage }

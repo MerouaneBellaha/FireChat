@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class RegistrationController: UIViewController {
 
@@ -81,39 +80,31 @@ class RegistrationController: UIViewController {
             let userName = usernameContainerView.getTextField().text?.lowercased(),
             let profileImage = addPhotoButton.imageView?.image ?? UIImage(systemName: "person"),
             let profileImageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        showHUD(with: "Signing you up")
         let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName,
                                                   userName: userName, profileImageData: profileImageData)
         authService.credentials = credentials
         authService.createUser { error in
-                    guard error == nil else {
-                        print(error!.localizedDescription)
-                        return
-                    }
-                    self.dismiss(animated: true)
-                }
-
-//        let userFactory = UserFactory(email: email, password: password, fullName: fullName,
-//                                      userName: userName, profileImageData: profileImageData)
-//        userFactory.createUser { error in
-//            guard error == nil else {
-//                print(error!.localizedDescription)
-//                return
-//            }
-//            self.dismiss(animated: true)
-//        }
+            guard error == nil else {
+                self.HUD?.dismiss()
+                print(error!.localizedDescription)
+                return
+            }
+            self.dismiss(animated: true)
+        }
     }
+    
     // MARK: - Helpers
 
     private func configureUI() {
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.barStyle = .black
-
+        hideNavigationBar()
         configureGradientBackground()
         configureAddPhotoButton()
         configureStackView(arrangedSubviews: [emailContainerView, nameContainerView,
                                               usernameContainerView, passwordContainerView, signUpButton]) { addPhotoButton }
         configureAlreadyHaveAccountButton()
         configureTextFields()
+        configureKeyboardNotification()
     }
 
     private func configureAddPhotoButton() {
