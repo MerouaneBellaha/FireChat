@@ -8,8 +8,8 @@
 
 import UIKit
 
-class BottomButton: UIButton {
-    init(firstString: String, secondString: String, target: UIViewController?, action: Selector) {
+final class BottomButton: UIButton {
+    init(firstString: String, secondString: String,/* target: UIViewController?,*/ action: Selector) {
         super.init(frame: .zero)
         let attributedTitle = NSMutableAttributedString(string: firstString,
                                                         attributes: [.font: UIFont.systemFont(ofSize: 16),
@@ -18,7 +18,7 @@ class BottomButton: UIButton {
                                                   attributes: [.font: UIFont.boldSystemFont(ofSize: 16),
                                                                .foregroundColor: UIColor.white]))
         setAttributedTitle(attributedTitle, for: .normal)
-        addTarget(target, action: action, for: .touchUpInside)
+        addTarget(nil, action: action, for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {

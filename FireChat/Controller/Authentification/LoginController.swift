@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+final class LoginController: UIViewController {
     
     // MARK: - Properties
 
@@ -31,11 +31,11 @@ class LoginController: UIViewController {
                                                         textFieldSettings: TextFieldSettings(placeholder: "email"))
     private let passwordContainerView = InputContainerView(imageName: "lock",
                                                            textFieldSettings: TextFieldSettings(secured: true, placeholder: "password"))
-    // is target needed? and if not don't need to keep the lazy var 
-    private lazy var loginButton = CustomButton(title: "Log in", target: LoginController(), action: #selector(handleLogin))
-    private lazy var noAccountButton = BottomButton(firstString: "Don't have an account?  ",
+    // if problem with target -> lazy var + addTarget to parameters?
+    private let loginButton = CustomButton(title: "Log in", action: #selector(handleLogin))
+    private let noAccountButton = BottomButton(firstString: "Don't have an account?  ",
                                                     secondString: "Sign Up",
-                                                    target: LoginController(), action: #selector(displayRegistrationVC))
+                                                    action: #selector(displayRegistrationVC))
 
 
     // MARK: - Lifecycle
@@ -48,7 +48,7 @@ class LoginController: UIViewController {
     // MARK: - Selectors
 
     @objc
-    func handleLogin() {
+    private func handleLogin() {
         guard let email = emailContainerView.getTextField().text,
             let password = passwordContainerView.getTextField().text else { return }
         showHUD(with: "Logging in")
@@ -63,12 +63,12 @@ class LoginController: UIViewController {
     }
 
     @objc
-    func displayRegistrationVC() {
+    private func displayRegistrationVC() {
         navigationController?.pushViewController(RegistrationController(), animated: true)
     }
 
     @objc
-    func checkFormStatus() {
+    private func checkFormStatus() {
         loginButton.isAvailable = loginViewModel.formIsValid
     }
 

@@ -21,9 +21,9 @@ struct FirestoreData {
     var userID: String
 }
 
-class AuthService {
+final class AuthService {
 
-    var ref: StorageReference!
+    private var ref: StorageReference!
     var credentials: RegistrationCredentials!
 
     func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+final class CustomButton: UIButton {
     var isAvailable = false {
         didSet {
             if isAvailable == true {
@@ -21,7 +21,7 @@ class CustomButton: UIButton {
         }
     }
 
-    init(title: String, target: UIViewController?, action: Selector) {
+    init(title: String,/* target: UIViewController?,*/ action: Selector) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
         layer.cornerRadius = 5
@@ -30,7 +30,7 @@ class CustomButton: UIButton {
         setTitleColor(.white, for: .normal)
         isEnabled = false
         setHeight(height: 50)
-        addTarget(target, action: action, for: .touchUpInside)
+        addTarget(nil, action: action, for: .touchUpInside)
     }
 
     required init?(coder: NSCoder) {

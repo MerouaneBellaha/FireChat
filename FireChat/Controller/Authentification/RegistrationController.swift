@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationController: UIViewController {
+final class RegistrationController: UIViewController {
 
     // MARK: - Properties
 
@@ -40,11 +40,11 @@ class RegistrationController: UIViewController {
                                                            textFieldSettings: TextFieldSettings(placeholder: "username"))
     private let passwordContainerView = InputContainerView(imageName: "lock",
                                                            textFieldSettings: TextFieldSettings(placeholder: "password"))
-    // is target needed? and if not don't need to keep the lazy var 
-    private lazy var signUpButton = CustomButton(title: "Sign Up", target: RegistrationController(), action: #selector(handleRegistration))
-    private lazy var alreadyHaveAccountButton = BottomButton(firstString: "Already have an account?  ",
+    // if problem with target -> lazy var + addTarget to parameters?
+    private let signUpButton = CustomButton(title: "Sign Up", action: #selector(handleRegistration))
+    private let alreadyHaveAccountButton = BottomButton(firstString: "Already have an account?  ",
                                                              secondString: "Log In",
-                                                             target: RegistrationController(), action: #selector(displayLoginVC))
+                                                             action: #selector(displayLoginVC))
 
     // MARK: - Lifecycle
 
@@ -56,34 +56,26 @@ class RegistrationController: UIViewController {
     // MARK: - Selectors
 
     @objc
-    func displayPickerController() {
+    private func displayPickerController() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         present(imagePickerController, animated: true)
     }
 
     @objc
-    func checkFormStatus() {
+    private func checkFormStatus() {
         signUpButton.isAvailable = registrationViewModel.formIsValid
     }
 
     @objc
-    func displayLoginVC() {
+    private func displayLoginVC() {
         navigationController?.popViewController(animated: true)
     }
 
     @objc
-    func handleRegistration() {
-        guard let email = emailContainerView.getTextField().text,
-            let password = passwordContainerView.getTextField().text,
-            let fullName = nameContainerView.getTextField().text,
-            let userName = usernameContainerView.getTextField().text?.lowercased(),
-            let profileImage = addPhotoButton.imageView?.image ?? UIImage(systemName: "person"),
-            let profileImageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+    private func handleRegistration() {
+        setCredentials()
         showHUD(with: "Signing you up")
-        let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName,
-                                                  userName: userName, profileImageData: profileImageData)
-        authService.credentials = credentials
         authService.createUser { error in
             guard error == nil else {
                 self.HUD?.dismiss()
@@ -95,6 +87,18 @@ class RegistrationController: UIViewController {
     }
     
     // MARK: - Helpers
+
+    private func setCredentials() {
+        guard let email = emailContainerView.getTextField().text,
+            let password = passwordContainerView.getTextField().text,
+            let fullName = nameContainerView.getTextField().text,
+            let userName = usernameContainerView.getTextField().text?.lowercased(),
+            let profileImage = addPhotoButton.imageView?.image ?? UIImage(systemName: "person"),
+            let profileImageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName,
+                                                  userName: userName, profileImageData: profileImageData)
+        authService.credentials = credentials
+    }
 
     private func configureUI() {
         hideNavigationBar()

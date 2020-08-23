@@ -18,10 +18,10 @@ struct TextFieldSettings {
     }
 }
 
-class InputContainerView: UIView {
+final class InputContainerView: UIView {
 
-    let imageView = UIImageView()
-    let textField = UITextField()
+    private let imageView = UIImageView()
+    private let textField = UITextField()
 
     init(imageName: String, textFieldSettings: TextFieldSettings) {
         super.init(frame: .zero)
@@ -32,7 +32,7 @@ class InputContainerView: UIView {
         setDividerView()
     }
 
-    func setImageView(imageName: String) {
+    private func setImageView(imageName: String) {
         imageView.image = UIImage(systemName: imageName)
         imageView.tintColor = .white
         imageView.alpha = 0.87
@@ -42,7 +42,7 @@ class InputContainerView: UIView {
         imageView.setDimensions(height: 24, width: 24)
     }
 
-    func setTextField(with textFieldSettings: TextFieldSettings) {
+    private func setTextField(with textFieldSettings: TextFieldSettings) {
         textField.isSecureTextEntry = textFieldSettings.secured
         textField.tag = 1
         textField.textColor = .white
@@ -56,7 +56,7 @@ class InputContainerView: UIView {
                             right: rightAnchor, paddingLeft: 8, paddingBottom: -8)
     }
 
-    func setDividerView() {
+    private func setDividerView() {
         let dividerView = UIView()
         dividerView.backgroundColor = .white
         addSubview(dividerView)

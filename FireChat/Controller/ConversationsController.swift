@@ -11,13 +11,14 @@ import Firebase
 
 // constant
 
-private let reuseIdentifer = "ConversationCell"
+private let reuseIdentifier = "ConversationCell"
 
-class ConversationsController: UIViewController {
+final class ConversationsController: UIViewController {
 
     // MARK: - Properties
 
     private let tableView = UITableView()
+    private let plusButton = PlusButton(selector: #selector(displayerUsersListController))
 
     // MARK: - Lifecycle
 
@@ -30,7 +31,12 @@ class ConversationsController: UIViewController {
     // MARK: - Selectors
 
     @objc
-    func logout() {
+    private func displayerUsersListController() {
+         navigationController?.pushViewController(UsersListController(), animated: true)
+     }
+
+    @objc
+    private func logout() {
         do {
             try Auth.auth().signOut()
             presentLoginScreen()
@@ -40,7 +46,7 @@ class ConversationsController: UIViewController {
 
     // MARK: - API
 
-    func authentificateUser() {
+    private func authentificateUser() {
         if Auth.auth().currentUser?.uid == nil {
             presentLoginScreen()
         } else {
@@ -50,7 +56,7 @@ class ConversationsController: UIViewController {
 
     // MARK: - Helpers
 
-    func presentLoginScreen() {
+    private func presentLoginScreen() {
         DispatchQueue.main.async {
             let controller = LoginController()
             let nav = UINavigationController(rootViewController: controller)
@@ -59,21 +65,28 @@ class ConversationsController: UIViewController {
         }
     }
 
-    func configureUI() {
+    private func configureUI() {
         view.backgroundColor = .white
 
         configureNavigationBar()
         configureTableView()
+        configurePlusButton()
 
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(logout))
     }
 
+    private func configurePlusButton() {
+        view.addSubview(plusButton)
+        plusButton.setAnchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor,
+                             paddingBottom: 16, paddingRight: 24)
+    }
 
-    func configureTableView() {
+
+    private func configureTableView() {
         tableView.backgroundColor = .white
         tableView.rowHeight = 80
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifer)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
 
         // Separator lines equal to cells in the tableView ( means no extra separator lines )
         tableView.tableFooterView = UIView()
@@ -94,7 +107,7 @@ extension ConversationsController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         return cell
     }
 }
