@@ -9,16 +9,13 @@
 import UIKit
 import Firebase
 
-// constant
-
-private let reuseIdentifier = "ConversationCell"
-
 final class ConversationsController: UIViewController {
 
     // MARK: - Properties
 
     private let tableView = UITableView()
-    private let plusButton = PlusButton(selector: #selector(displayerUsersListController))
+    private let plusButton = PlusButton(selector: #selector(displayUsersListController))
+    private let fetchService = FetchService()
 
     // MARK: - Lifecycle
 
@@ -31,9 +28,14 @@ final class ConversationsController: UIViewController {
     // MARK: - Selectors
 
     @objc
-    private func displayerUsersListController() {
-         navigationController?.pushViewController(UsersListController(), animated: true)
-     }
+    private func displayUsersListController() {
+        let destinationVC = UsersListController()
+        fetchService.fetchUsers() { users in
+            destinationVC.users = users
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+
+    }
 
     @objc
     private func logout() {
@@ -86,7 +88,7 @@ final class ConversationsController: UIViewController {
     private func configureTableView() {
         tableView.backgroundColor = .white
         tableView.rowHeight = 80
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.conversationCell)
 
         // Separator lines equal to cells in the tableView ( means no extra separator lines )
         tableView.tableFooterView = UIView()
@@ -107,7 +109,7 @@ extension ConversationsController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.conversationCell, for: indexPath)
         return cell
     }
 }
