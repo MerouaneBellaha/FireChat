@@ -18,7 +18,6 @@ final class UsersListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        print(users[0])
     }
 
     // MARK: - Helpers
@@ -48,8 +47,8 @@ extension UsersListController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UserCell
-        
+        var cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UserCell
+        cell = UserCell(user: users[indexPath.row])
         return cell
     }
 }
