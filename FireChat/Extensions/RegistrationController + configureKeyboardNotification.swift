@@ -19,11 +19,13 @@ extension RegistrationController {
 
     @objc
     private func keyboardWillShow() {
+        guard view.frame.origin.y == 0 else { return }
         view.frame.origin.y -= 88
     }
 
     @objc
     private func keyboardWillHide() {
+        guard view.frame.origin.y != 0 else { return }
         view.frame.origin.y = 0
     }
 }

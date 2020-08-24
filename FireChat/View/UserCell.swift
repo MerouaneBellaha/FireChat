@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UITableViewCell {
 
@@ -23,7 +24,6 @@ class UserCell: UITableViewCell {
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.text = "ouhouh"
         return label
     }()
 
@@ -31,7 +31,6 @@ class UserCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "okok"
         return label
     }()
 
@@ -46,10 +45,18 @@ class UserCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .systemPink
         configureProfileImageView()
         configureStackView()
     }
+
+    convenience init(user: User) {
+        self.init()
+        fullNameLabel.text = user.fullName
+        userNameLabel.text = user.userName
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.sd_setImage(with: url)
+    }
+
 
     // MARK: - Helpers
 

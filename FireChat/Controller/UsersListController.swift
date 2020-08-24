@@ -8,11 +8,10 @@
 
 import UIKit
 
-private let reuseIdentifier = "UserCell"
-
 final class UsersListController: UITableViewController {
 
     // MARK: - Properties
+    var users: [User] = []
 
     // MARK: - Lifecycle
 
@@ -31,11 +30,11 @@ final class UsersListController: UITableViewController {
 
     private func configureNavBar() {
         navigationItem.title = "Users"
-        navigationController?.navigationBar.prefersLargeTitles = false
+//        navigationController?.navigationBar.prefersLargeTitles = false
     }
     private func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(UserCell.self, forCellReuseIdentifier: K.userCell)
         tableView.rowHeight = 80
     }
 }
@@ -44,11 +43,12 @@ final class UsersListController: UITableViewController {
 
 extension UsersListController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return users.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! UserCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UserCell
+        cell = UserCell(user: users[indexPath.row])
         return cell
     }
 }
