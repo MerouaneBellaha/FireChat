@@ -10,6 +10,7 @@
 		7B0709B34724022E0923078A /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5DE5283A4014071B914029 /* Pods_FireChat.framework */; };
 		CB1315A724EFBE3F00F86D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */; };
 		CB8427E124F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */; };
+		CBCEA6A924F4E9CA00DA1306 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */; };
 		CBD03B3A24F249FC00F6D883 /* UIViewController + HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */; };
 		CBD03B3C24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */; };
 		CBD03B3E24F2820300F6D883 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3D24F2820300F6D883 /* PlusButton.swift */; };
@@ -45,6 +46,7 @@
 		6217E6873D68D33EE2D170C9 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
 		CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureNavigationBar.swift"; sourceTree = "<group>"; };
+		CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + HUD.swift"; sourceTree = "<group>"; };
 		CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationController + configureKeyboardNotification.swift"; sourceTree = "<group>"; };
 		CBD03B3D24F2820300F6D883 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				CBD03B3D24F2820300F6D883 /* PlusButton.swift */,
 				CBD03B4124F29A4700F6D883 /* UserCell.swift */,
 				CBD03B4B24F3BA3600F6D883 /* CustomInputAccessoryView.swift */,
+				CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */,
 				CBF7BE3D24F0F91800076540 /* AuthService.swift in Sources */,
 				CBD03B4224F29A4700F6D883 /* UserCell.swift in Sources */,
+				CBCEA6A924F4E9CA00DA1306 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,10 +27,6 @@ final class UsersListController: UITableViewController {
 
     // MARK: - Selector
 
-    @objc
-    func b() {
-        print("MMII")
-    }
 
     // MARK: - Helpers
 
@@ -46,7 +42,7 @@ final class UsersListController: UITableViewController {
     }
     private func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(UserCell.self, forCellReuseIdentifier: K.userCell)
+        tableView.register(UserCell.self, forCellReuseIdentifier: K.Cell.user)
         tableView.rowHeight = 80
     }
 }
@@ -59,7 +55,7 @@ extension UsersListController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UserCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.user, for: indexPath) as! UserCell
         cell = UserCell(user: users[indexPath.row])
         return cell
     }

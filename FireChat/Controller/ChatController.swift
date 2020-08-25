@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatController: UICollectionViewController {
+final class ChatController: UICollectionViewController {
 
     // MARK: - Properties
 
@@ -42,12 +42,43 @@ class ChatController: UICollectionViewController {
 
     // MARK: - Helpers
 
-    func configureUI() {
+    private func configureUI() {
         collectionView.backgroundColor = .white
         configureNavBar()
+        configureCollectionView()
     }
 
-    func configureNavBar() {
+    private func configureNavBar() {
         navigationItem.title = "\(user.userName.capitalized)"
     }
+
+    private func configureCollectionView() {
+        collectionView.register(MessageCell.self, forCellWithReuseIdentifier: K.Cell.message)
+        collectionView.alwaysBounceVertical = true
+    }
 }
+
+// MARK: - UICollectionViewDataSource
+
+extension ChatController {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Cell.message, for: indexPath) as! MessageCell
+        return cell
+    }
+}
+
+
+extension ChatController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: 16, left: 0, bottom: 16, right: 0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 50)
+    }
+}
+

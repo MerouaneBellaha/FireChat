@@ -89,7 +89,7 @@ final class ConversationsController: UIViewController {
     private func configureTableView() {
         tableView.backgroundColor = .white
         tableView.rowHeight = 80
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.conversationCell)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: K.Cell.conversation)
 
         // Separator lines equal to cells in the tableView ( means no extra separator lines )
         tableView.tableFooterView = UIView()
@@ -110,7 +110,7 @@ extension ConversationsController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.conversationCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.conversation, for: indexPath)
         return cell
     }
 }
