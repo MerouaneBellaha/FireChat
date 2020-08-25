@@ -10,6 +10,7 @@
 		7B0709B34724022E0923078A /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5DE5283A4014071B914029 /* Pods_FireChat.framework */; };
 		CB1315A724EFBE3F00F86D99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */; };
 		CB8427E124F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */; };
+		CBCEA6A924F4E9CA00DA1306 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */; };
 		CBD03B3A24F249FC00F6D883 /* UIViewController + HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */; };
 		CBD03B3C24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */; };
 		CBD03B3E24F2820300F6D883 /* PlusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B3D24F2820300F6D883 /* PlusButton.swift */; };
@@ -18,6 +19,8 @@
 		CBD03B4424F2A59200F6D883 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B4324F2A59200F6D883 /* User.swift */; };
 		CBD03B4624F2A62800F6D883 /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B4524F2A62800F6D883 /* FetchService.swift */; };
 		CBD03B4824F38C9B00F6D883 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B4724F38C9B00F6D883 /* Constant.swift */; };
+		CBD03B4A24F39F3100F6D883 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B4924F39F3100F6D883 /* ChatController.swift */; };
+		CBD03B4C24F3BA3600F6D883 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD03B4B24F3BA3600F6D883 /* CustomInputAccessoryView.swift */; };
 		CBE4166324ED0A34009A23AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166224ED0A34009A23AB /* AppDelegate.swift */; };
 		CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166424ED0A34009A23AB /* SceneDelegate.swift */; };
 		CBE4166724ED0A34009A23AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE4166624ED0A34009A23AB /* ViewController.swift */; };
@@ -43,6 +46,7 @@
 		6217E6873D68D33EE2D170C9 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
 		CB1315A624EFBE3F00F86D99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CB8427E024F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + configureNavigationBar.swift"; sourceTree = "<group>"; };
+		CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		CBD03B3924F249FC00F6D883 /* UIViewController + HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + HUD.swift"; sourceTree = "<group>"; };
 		CBD03B3B24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegistrationController + configureKeyboardNotification.swift"; sourceTree = "<group>"; };
 		CBD03B3D24F2820300F6D883 /* PlusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusButton.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		CBD03B4324F2A59200F6D883 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CBD03B4524F2A62800F6D883 /* FetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchService.swift; sourceTree = "<group>"; };
 		CBD03B4724F38C9B00F6D883 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		CBD03B4924F39F3100F6D883 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		CBD03B4B24F3BA3600F6D883 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 		CBE4165F24ED0A34009A23AB /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE4166224ED0A34009A23AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBE4166424ED0A34009A23AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 				CBE4168124ED1583009A23AB /* Authentification */,
 				CBE4167F24ED0ADB009A23AB /* ConversationsController.swift */,
 				CBD03B3F24F288AF00F6D883 /* UsersListController.swift */,
+				CBD03B4924F39F3100F6D883 /* ChatController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +195,8 @@
 				CBE4169024EE6627009A23AB /* BottomButton.swift */,
 				CBD03B3D24F2820300F6D883 /* PlusButton.swift */,
 				CBD03B4124F29A4700F6D883 /* UserCell.swift */,
+				CBD03B4B24F3BA3600F6D883 /* CustomInputAccessoryView.swift */,
+				CBCEA6A824F4E9CA00DA1306 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -346,10 +355,12 @@
 				CBE4169524EE717E009A23AB /* UIViewController + configureStackView.swift in Sources */,
 				CBE4168024ED0ADB009A23AB /* ConversationsController.swift in Sources */,
 				CBE4166524ED0A34009A23AB /* SceneDelegate.swift in Sources */,
+				CBD03B4C24F3BA3600F6D883 /* CustomInputAccessoryView.swift in Sources */,
 				CBE4169724EE7B9F009A23AB /* LoginViewModel.swift in Sources */,
 				CBD03B4424F2A59200F6D883 /* User.swift in Sources */,
 				CBD03B4824F38C9B00F6D883 /* Constant.swift in Sources */,
 				CBD03B4024F288AF00F6D883 /* UsersListController.swift in Sources */,
+				CBD03B4A24F39F3100F6D883 /* ChatController.swift in Sources */,
 				CBD03B3C24F26E9B00F6D883 /* RegistrationController + configureKeyboardNotification.swift in Sources */,
 				CB8427E124F1285B00B38DC8 /* UIViewController + configureNavigationBar.swift in Sources */,
 				CBD03B4624F2A62800F6D883 /* FetchService.swift in Sources */,
@@ -361,6 +372,7 @@
 				CBE4169D24EEA865009A23AB /* RegistrationViewModel.swift in Sources */,
 				CBF7BE3D24F0F91800076540 /* AuthService.swift in Sources */,
 				CBD03B4224F29A4700F6D883 /* UserCell.swift in Sources */,
+				CBCEA6A924F4E9CA00DA1306 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,10 @@ import Foundation
 
 struct K {
     static let emptyString = ""
-    static let userCell = "UserCell"
-    static let conversationCell = "ConversationCell"
+    
+    struct Cell {
+        static let user = "UserCell"
+        static let conversation = "ConversationCell"
+        static let message = "MessageCell"
+    }
 }

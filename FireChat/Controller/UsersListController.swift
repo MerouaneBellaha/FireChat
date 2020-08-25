@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol UsersListControllerDelegate: class {
+    func didStartAConversation(with user: User)
+}
+
 final class UsersListController: UITableViewController {
 
     // MARK: - Properties
     var users: [User] = []
+    weak var delegate: UsersListControllerDelegate?
 
     // MARK: - Lifecycle
 
@@ -19,6 +24,9 @@ final class UsersListController: UITableViewController {
         super.viewDidLoad()
         configureUI()
     }
+
+    // MARK: - Selector
+
 
     // MARK: - Helpers
 
@@ -34,12 +42,12 @@ final class UsersListController: UITableViewController {
     }
     private func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(UserCell.self, forCellReuseIdentifier: K.userCell)
+        tableView.register(UserCell.self, forCellReuseIdentifier: K.Cell.user)
         tableView.rowHeight = 80
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDataSource
 
 extension UsersListController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,17 +55,18 @@ extension UsersListController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: K.userCell, for: indexPath) as! UserCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: K.Cell.user, for: indexPath) as! UserCell
         cell = UserCell(user: users[indexPath.row])
         return cell
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableViewDelegate
 
 extension UsersListController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
+        navigationController?.popViewController(animated: false)
+        delegate?.didStartAConversation(with: users[indexPath.row])
     }
 }
 
