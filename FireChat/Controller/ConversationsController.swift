@@ -32,6 +32,7 @@ final class ConversationsController: UIViewController {
         let destinationVC = UsersListController()
         fetchService.fetchUsers() { users in
             destinationVC.users = users
+            destinationVC.delegate = self
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
 
@@ -119,5 +120,14 @@ extension ConversationsController: UITableViewDataSource {
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt")
+    }
+}
+
+// MARK: - UsersListControllerDelegate
+
+extension ConversationsController: UsersListControllerDelegate {
+    func didStartAConversation(with user: User) {
+        print("hello \(user.userName)")
+        navigationController?.pushViewController(ChatController(user: user), animated: true)
     }
 }

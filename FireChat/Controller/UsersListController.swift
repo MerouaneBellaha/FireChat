@@ -8,16 +8,28 @@
 
 import UIKit
 
+protocol UsersListControllerDelegate: class {
+    func didStartAConversation(with user: User)
+}
+
 final class UsersListController: UITableViewController {
 
     // MARK: - Properties
     var users: [User] = []
+    weak var delegate: UsersListControllerDelegate?
 
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+
+    // MARK: - Selector
+
+    @objc
+    func b() {
+        print("MMII")
     }
 
     // MARK: - Helpers
@@ -39,7 +51,7 @@ final class UsersListController: UITableViewController {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - UITableViewDataSource
 
 extension UsersListController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,11 +65,12 @@ extension UsersListController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableViewDelegate
 
 extension UsersListController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
+        navigationController?.popViewController(animated: false)
+        delegate?.didStartAConversation(with: users[indexPath.row])
     }
 }
 
